@@ -43,14 +43,64 @@ function isMobile() {
     return window.innerWidth <= 767.98
 }
 
-accordionCol.forEach(col => {
-    col.addEventListener('mouseenter', () => {
-        accordionCol.forEach(c => {
-            c.classList.remove('active')
-            col.classList.add('active')
+// Функция для активации карточки
+function activateAccordionItem(element) {
+    accordionCol.forEach(c => {
+        c.classList.remove('active')
+    })
+    element.classList.add('active')
+}
+
+if (isMobile()) {
+    function updateActiveOnScroll() {
+        const windowCenter = window.innerHeight / 2
+        let closestElement = null
+        let minDistance = Infinity
+
+        accordionCol.forEach(col => {
+            const rect = col.getBoundingClientRect()
+            const elementCenter = rect.top + rect.height / 2
+            const distance = Math.abs(windowCenter - elementCenter)
+            
+            // Учитываем только видимые элементы
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (distance < minDistance) {
+                    minDistance = distance
+                    closestElement = col
+                }
+            }
+        })
+
+        if (closestElement) {
+            accordionCol.forEach(c => c.classList.remove('active'))
+            closestElement.classList.add('active')
+        }
+    }
+
+    // Запускаем при скролле
+    window.addEventListener('scroll', updateActiveOnScroll)
+    // И при загрузке
+    updateActiveOnScroll()
+} else {
+    // Для десктопа - оставляем hover
+    accordionCol.forEach(col => {
+        col.addEventListener('mouseenter', () => {
+            accordionCol.forEach(c => {
+                c.classList.remove('active')
+                col.classList.add('active')
+            })
         })
     })
-})
+}
+
+// accordionCol.forEach(col => {
+//     col.addEventListener('mouseenter', () => {
+//         accordionCol.forEach(c => {
+//             c.classList.remove('active')
+//             col.classList.add('active')
+//         })
+//     })
+// })
 
 // accordionCol.forEach(col => {
 //     if (isMobile()) {

@@ -704,14 +704,16 @@ ul {
 	}
 
 	.accordion__col {
-		height: 70px;
+		height: 200px;
 		min-width: 100%;
 		transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+		flex: none;
 	}
 
 	.accordion__col.active {
 		height: 60vh;
 		max-height: 500px;
+		flex: none;
 	}
 
 	.accordion__col:not(.active) .accordion__header h2,
