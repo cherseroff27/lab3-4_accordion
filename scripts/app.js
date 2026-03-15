@@ -43,16 +43,6 @@ function isMobile() {
     return window.innerWidth <= 767.98
 }
 
-function activateAccordionItem(element) {
-    const currentlyActive = document.querySelector('.accordion__col.active')
-    if (currentlyActive !== element) {
-        accordionCol.forEach(c => {
-            c.classList.remove('active')
-        })
-        element.classList.add('active')
-    }
-}
-
 if (isMobile()) {
     function updateActiveOnScroll() {
         const windowCenter = window.innerHeight / 2
@@ -140,36 +130,6 @@ if (isMobile()) {
 //             col.classList.add('active')
 //         })
 //     })
-// })
-
-// accordionCol.forEach(col => {
-//     if (isMobile()) {
-//         col.addEventListener('click', () => {
-//             accordionCol.forEach(c => {
-//                 if (c === col) {
-//                     c.classList.add('active')
-//                 } else {
-//                     c.classList.remove('active')
-//                 }
-//             })
-//         })
-//     } else {
-//         col.addEventListener('mouseenter', () => {
-//             accordionCol.forEach(c => {
-//                 c.classList.remove('active')
-//                 col.classList.add('active')
-//             })
-//         })
-//     }
-// })
-
-// window.addEventListener('resize', () => {
-//     accordionCol.forEach(col => {
-//         const newCol = col.cloneNode(true)
-//         col.parentNode.replaceChild(newCol, col)
-//     })
-    
-//     location.reload()
 // })
 
 const lenis = new Lenis()
