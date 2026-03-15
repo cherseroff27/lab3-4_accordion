@@ -38,6 +38,11 @@ gsap.utils.toArray('[data-parallax-wrapper]').forEach(container => {
 })
 
 const accordionCol = document.querySelectorAll('.accordion__col')
+
+function isMobile() {
+    return window.innerWidth <= 767.98
+}
+
 accordionCol.forEach(col => {
     col.addEventListener('mouseenter', () => {
         accordionCol.forEach(c => {
@@ -47,6 +52,35 @@ accordionCol.forEach(col => {
     })
 })
 
+// accordionCol.forEach(col => {
+//     if (isMobile()) {
+//         col.addEventListener('click', () => {
+//             accordionCol.forEach(c => {
+//                 if (c === col) {
+//                     c.classList.add('active')
+//                 } else {
+//                     c.classList.remove('active')
+//                 }
+//             })
+//         })
+//     } else {
+//         col.addEventListener('mouseenter', () => {
+//             accordionCol.forEach(c => {
+//                 c.classList.remove('active')
+//                 col.classList.add('active')
+//             })
+//         })
+//     }
+// })
+
+// window.addEventListener('resize', () => {
+//     accordionCol.forEach(col => {
+//         const newCol = col.cloneNode(true)
+//         col.parentNode.replaceChild(newCol, col)
+//     })
+    
+//     location.reload()
+// })
 
 const lenis = new Lenis()
 

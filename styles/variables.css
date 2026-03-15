@@ -1,19 +1,23 @@
 :root {
-	--dark: #271a2e;
+	/* Основной фон - темный, как бездна */
+	--dark: #0a0a0a;  /* Глубокий черный вместо фиолетового */
+		
+	/* Цвета для градиентных кругов - делаем их "угольными" */
+	--color1: 139, 69, 19;      /* #8B4513 - коричневый/ржавчина (цвет стали) */
+	--color2: 205, 92, 92;       /* #CD5C5C - индийский красный (кровь) */
+	--color3: 184, 115, 51;      /* #B87333 - медь (старинный металл) */
+	--color4: 71, 43, 28;        /* #472B1C - темно-коричневый (обгоревшее дерево) */
 
-	--color1: 18, 113, 255; /* #1271FF */
-	--color2: 221, 74, 255; /* #dd4aff */
-	--color3: 100, 220, 255; /* #64dcff */
-	--color4: 140, 100, 255; /* #8c64ff */
+	/* Градиенты для текста - делаем их "огненными" */
+	--color-gradient-1: #ff4500;  /* Оранжево-красный (огонь) */
+	--color-gradient-2: #b22222;  /* Кирпично-красный */
+	--color-gradient-3: #8b4513;  /* Коричневый */
+	--color-gradient-4: #654321;  /* Темно-коричневый */
+	--color-gradient-5: #321414;  /* Почти черный с красным */
+	--color-gradient-6: #1a0a0a;  /* Черный с оттенком */
+	--color-gradient-7: #d4af37;  /* Золотой (для акцентов) */
 
-	--color-gradient-1: #8e30f6;
-	--color-gradient-2: #9430f2;
-	--color-gradient-3: #a533e9;
-	--color-gradient-4: #c138da;
-	--color-gradient-5: #e83ec5;
-	--color-gradient-6: #ea3fc4;
-	--color-gradient-7: #c6b6ee;
-
+	/* Градиенты остаются с теми же пропорциями, но цвета меняем */
 	--gradient-base:
 		var(--color-gradient-1) 2%, var(--color-gradient-1) 18%, var(--color-gradient-1) 20%,
 		var(--color-gradient-2) 35%, var(--color-gradient-3) 50%, var(--color-gradient-4) 70%,
@@ -21,15 +25,13 @@
 
 	--gradient-1: linear-gradient(270deg, var(--gradient-base));
 	--gradient-2: linear-gradient(0deg, var(--gradient-base));
-	--gradient-3: linear-gradient(94deg, #fff -2%, var(--color-gradient-7) 70%);
+	--gradient-3: linear-gradient(94deg, #ff6b35 -2%, var(--color-gradient-7) 70%);
 
+	/* Оставляем blending и размеры */
 	--blending: hard-light;
-
 	--circle-size: 80%;
 	
 	--transition: all 0.5s;
-
 	--transition-mnu: 1s cubic-bezier(0.8, 0, 0.1, 1);
-
 	--radius: 8px;
 }
