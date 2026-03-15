@@ -697,6 +697,10 @@ ul {
 }
 
 @media (max-width: 767.98px) {
+	.container {
+		margin-top: 25px;
+	}
+
 	.accordion {
 		flex-direction: column;
 		gap: 10px;
@@ -704,7 +708,7 @@ ul {
 	}
 
 	.accordion__col {
-		height: 200px;
+		height: 175px;
 		min-width: 100%;
 		transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 		flex: none;

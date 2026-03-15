@@ -43,12 +43,14 @@ function isMobile() {
     return window.innerWidth <= 767.98
 }
 
-// Функция для активации карточки
 function activateAccordionItem(element) {
-    accordionCol.forEach(c => {
-        c.classList.remove('active')
-    })
-    element.classList.add('active')
+    const currentlyActive = document.querySelector('.accordion__col.active')
+    if (currentlyActive !== element) {
+        accordionCol.forEach(c => {
+            c.classList.remove('active')
+        })
+        element.classList.add('active')
+    }
 }
 
 if (isMobile()) {
@@ -56,16 +58,43 @@ if (isMobile()) {
         const windowCenter = window.innerHeight / 2
         let closestElement = null
         let minDistance = Infinity
+        
+        let isAtTop = false
+        let isAtBottom = false
+        
+        if (window.scrollY < 100) {
+            isAtTop = true
+        }
+        
+        const lastAccordionItem = accordionCol[accordionCol.length - 1]
+        const lastItemRect = lastAccordionItem.getBoundingClientRect()
+        if (lastItemRect.bottom <= window.innerHeight) {
+            isAtBottom = true
+        }
+        
+        if (isAtTop) {
+            accordionCol.forEach(c => c.classList.remove('active'))
+            accordionCol[0].classList.add('active')
+            return
+        }
+        
+        if (isAtBottom) {
+            accordionCol.forEach(c => c.classList.remove('active'))
+            accordionCol[accordionCol.length - 1].classList.add('active')
+            return
+        }
 
         accordionCol.forEach(col => {
             const rect = col.getBoundingClientRect()
-            const elementCenter = rect.top + rect.height / 2
-            const distance = Math.abs(windowCenter - elementCenter)
             
-            // Учитываем только видимые элементы
             if (rect.top < window.innerHeight && rect.bottom > 0) {
-                if (distance < minDistance) {
-                    minDistance = distance
+                const elementCenter = rect.top + rect.height / 2
+                const distance = Math.abs(windowCenter - elementCenter)
+                
+                const adjustedDistance = distance * (1 - (rect.top / window.innerHeight) * 0.3)
+                
+                if (adjustedDistance < minDistance) {
+                    minDistance = adjustedDistance
                     closestElement = col
                 }
             }
@@ -77,12 +106,23 @@ if (isMobile()) {
         }
     }
 
-    // Запускаем при скролле
-    window.addEventListener('scroll', updateActiveOnScroll)
-    // И при загрузке
+    let isScrolling = false
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                updateActiveOnScroll()
+                isScrolling = false
+            })
+            isScrolling = true
+        }
+    })
+
+    window.addEventListener('resize', updateActiveOnScroll)
+    
     updateActiveOnScroll()
+    
+    setTimeout(updateActiveOnScroll, 100)
 } else {
-    // Для десктопа - оставляем hover
     accordionCol.forEach(col => {
         col.addEventListener('mouseenter', () => {
             accordionCol.forEach(c => {
