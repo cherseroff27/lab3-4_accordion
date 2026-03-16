@@ -37,102 +37,11 @@ gsap.utils.toArray('[data-parallax-wrapper]').forEach(container => {
     })
 })
 
-const accordionCol = document.querySelectorAll('.accordion__col')
-
-function isMobile() {
-    return window.innerWidth <= 767.98
-}
-
-if (isMobile()) {
-    function updateActiveOnScroll() {
-        const windowCenter = window.innerHeight / 2
-        let closestElement = null
-        let minDistance = Infinity
-        
-        let isAtTop = false
-        let isAtBottom = false
-        
-        if (window.scrollY < 100) {
-            isAtTop = true
-        }
-        
-        const lastAccordionItem = accordionCol[accordionCol.length - 1]
-        const lastItemRect = lastAccordionItem.getBoundingClientRect()
-        if (lastItemRect.bottom <= window.innerHeight) {
-            isAtBottom = true
-        }
-        
-        if (isAtTop) {
-            accordionCol.forEach(c => c.classList.remove('active'))
-            accordionCol[0].classList.add('active')
-            return
-        }
-        
-        if (isAtBottom) {
-            accordionCol.forEach(c => c.classList.remove('active'))
-            accordionCol[accordionCol.length - 1].classList.add('active')
-            return
-        }
-
-        accordionCol.forEach(col => {
-            const rect = col.getBoundingClientRect()
-            
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const elementCenter = rect.top + rect.height / 2
-                const distance = Math.abs(windowCenter - elementCenter)
-                
-                const adjustedDistance = distance * (1 - (rect.top / window.innerHeight) * 0.3)
-                
-                if (adjustedDistance < minDistance) {
-                    minDistance = adjustedDistance
-                    closestElement = col
-                }
-            }
-        })
-
-        if (closestElement) {
-            accordionCol.forEach(c => c.classList.remove('active'))
-            closestElement.classList.add('active')
-        }
-    }
-
-    let isScrolling = false
-    window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                updateActiveOnScroll()
-                isScrolling = false
-            })
-            isScrolling = true
-        }
-    })
-
-    window.addEventListener('resize', updateActiveOnScroll)
-    
-    updateActiveOnScroll()
-    
-    setTimeout(updateActiveOnScroll, 100)
-} else {
-    accordionCol.forEach(col => {
-        col.addEventListener('mouseenter', () => {
-            accordionCol.forEach(c => {
-                c.classList.remove('active')
-                col.classList.add('active')
-            })
-        })
-    })
-}
-
-// accordionCol.forEach(col => {
-//     col.addEventListener('mouseenter', () => {
-//         accordionCol.forEach(c => {
-//             c.classList.remove('active')
-//             col.classList.add('active')
-//         })
-//     })
-// })
-
-const lenis = new Lenis()
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true
+})
 
 function raf(time) {
     lenis.raf(time)
@@ -169,5 +78,3 @@ function globalGradient() {
 }
 
 globalGradient()
-
-    

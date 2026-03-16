@@ -70,9 +70,14 @@
 
 		<div class="container">
 			<section class="accordion">
+				<!-- Скрытые радио-кнопки для управления аккордеоном -->
+				<input type="radio" name="accordion" id="ds1" class="accordion__radio" checked>
+				<input type="radio" name="accordion" id="ds2" class="accordion__radio">
+				<input type="radio" name="accordion" id="ds3" class="accordion__radio">
 
 				<!-- Dark Souls 1 -->
-				<div class="accordion__col active" data-parallax-wrapper>
+				<div class="accordion__col" data-parallax-wrapper>
+					<label for="ds1" class="accordion__label" aria-label="Открыть Dark Souls 1"></label>
 					<div class="accordion__bg">
 						<img src="public/images/ready/dark-souls-1.png" alt="Dark Souls I" data-parallax-target />
 					</div>
@@ -91,6 +96,7 @@
 				
 				<!-- Dark Souls 2 -->
 				<div class="accordion__col" data-parallax-wrapper>
+					<label for="ds2" class="accordion__label" aria-label="Открыть Dark Souls 2"></label>
 					<div class="accordion__bg">
 						<img src="public/images/ready/dark-souls-2.png" alt="Dark Souls II" data-parallax-target />
 					</div>
@@ -109,6 +115,7 @@
 				
 				<!-- Dark Souls 3 -->
 				<div class="accordion__col" data-parallax-wrapper>
+					<label for="ds3" class="accordion__label" aria-label="Открыть Dark Souls 3"></label>
 					<div class="accordion__bg">
 						<img src="public/images/ready/dark-souls-3.png" alt="Dark Souls III" data-parallax-target />
 					</div>
@@ -124,24 +131,6 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Bloodborne-->
-				<!-- <div class="accordion__col" data-parallax-wrapper>
-					<div class="accordion__bg">
-						<img src="public/images/ready/bloodborne.png" alt="Dark Souls III" data-parallax-target />
-					</div>
-					<div class="accordion__start">Bloodborne</div>
-					<div class="accordion__content">
-						<div class="accordion__header">
-							<h2>Охота<br>Начинается</h2>
-						</div>
-						<div class="accordion__desc">
-							О, незнакомец... Добро пожаловать в Ярнам, город крови и тайн.
-							Охота уже началась, и ты либо станешь охотником, либо добычей.
-							Просто держи свою кровь человеческой.
-						</div>
-					</div>
-				</div> -->
 			</section>
 
 			<section class="gallery">
@@ -156,43 +145,33 @@
 
 				<div class="gallery__wrapper">
 					<div class="gallery__item">
-						<a href="#">
-							<div class="gallery__preview" data-parallax-wrapper>
-								<img src="public/images/ready/lordran-land-1.png" alt="Alt" data-parallax-target>
-							</div>
-						</a>
+						<div class="gallery__preview" data-parallax-wrapper>
+							<img src="public/images/ready/lordran-land-1.png" alt="Alt" data-parallax-target>
+						</div>
 					</div>
 
 					<div class="gallery__item">
-						<a href="#">
-							<div class="gallery__preview" data-parallax-wrapper>
-								<img src="public/images/ready/lordran-land-2.png" alt="Alt" data-parallax-target>
-							</div>
-						</a>
+						<div class="gallery__preview" data-parallax-wrapper>
+							<img src="public/images/ready/lordran-land-2.png" alt="Alt" data-parallax-target>
+						</div>
 					</div>
 
 					<div class="gallery__item">
-						<a href="#">
-							<div class="gallery__preview" data-parallax-wrapper>
-								<img src="public/images/ready/lordran-land-3.png" alt="Alt" data-parallax-target>
-							</div>
-						</a>
+						<div class="gallery__preview" data-parallax-wrapper>
+							<img src="public/images/ready/lordran-land-3.png" alt="Alt" data-parallax-target>
+						</div>
 					</div>
 
 					<div class="gallery__item">
-						<a href="#">
-							<div class="gallery__preview" data-parallax-wrapper>
-								<img src="public/images/ready/lordran-land-4.png" alt="Alt" data-parallax-target>
-							</div>
-						</a>
+						<div class="gallery__preview" data-parallax-wrapper>
+							<img src="public/images/ready/lordran-land-4.png" alt="Alt" data-parallax-target>
+						</div>
 					</div>
 
 					<div class="gallery__item">
-						<a href="#">
-							<div class="gallery__preview" data-parallax-wrapper>
-								<img src="public/images/ready/lordran-land-5.png" alt="Alt" data-parallax-target>
-							</div>
-						</a>
+						<div class="gallery__preview" data-parallax-wrapper>
+							<img src="public/images/ready/lordran-land-5.png" alt="Alt" data-parallax-target>
+						</div>
 					</div>
 				</div>
 			</section>

@@ -1,0 +1,29 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	letter-spacing: -0.01em;
+}
+
+html,
+body {
+	height: auto;
+}
+
+body {
+	background-color: var(--dark);
+	color: #fff;
+	font-family: montserrat-s, sans-serif;
+	min-width: 320px;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
